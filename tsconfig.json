@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "noImplicitReturns": true,
+    "strict": true,
+    "module": "commonjs",
+    "target": "es2018",
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
+}
