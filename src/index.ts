@@ -1,4 +1,4 @@
-import {Map} from "./map";
+import { Map } from "./map";
 import chalk from "chalk";
 import figlet from "figlet";
 import inquirer from "inquirer";
@@ -8,20 +8,20 @@ class Character {
         x: 1,
         y: 1,
         z: 0
-    }
+    };
 
-    constructor(private map: Map) {};
+    constructor(private map: Map) {}
 
     describeLocation(): Promise<void> {
         return new Promise(async (resolve, reject) => {
-            const {x,y,z} = this.position;
+            const { x, y, z } = this.position;
 
-            const cell = this.map.getMapData(x,y,z);
+            const cell = this.map.getMapData(x, y, z);
 
             console.log("");
-            console.log(chalk.bold.magenta(cell.name))
+            console.log(chalk.bold.magenta(cell.name));
             if (cell.description) {
-                console.log(cell.description)
+                console.log(cell.description);
             }
             console.log("");
 
@@ -47,14 +47,16 @@ class Character {
                 this.position.y = y + 1;
             }
 
-            return this.describeLocation().then(resolve).catch(reject);
+            return this.describeLocation()
+                .then(resolve)
+                .catch(reject);
         });
     }
 }
 
-async function init () {
-    console.log(figlet.textSync("Map"))
-    const Player = new Character(new Map())
+async function init() {
+    console.log(figlet.textSync("Map"));
+    const Player = new Character(new Map());
 
     await Player.describeLocation();
 }

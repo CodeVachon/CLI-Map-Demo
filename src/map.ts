@@ -1,53 +1,53 @@
 interface mapData {
     name: string;
     description?: string;
-    moveOptions?: string[]
+    moveOptions?: string[];
 }
 
 export class Map {
     private data: mapData[][][] = [
         [
             [
-            {
-                name: "Upper Left"
-            },
-            {
-                name: "Upper Center"
-            },
-            {
-                name: "Upper Right"
-            }
-        ],
-        [
-            {
-                name: "Center Left"
-            },
-            {
-                name: "Center Center",
-                description: "Start Here"
-            },
-            {
-                name: "Center Right"
-            }
-        ],
-        [
-            {
-                name: "Lower Left"
-            },
-            {
-                name: "Lower Center"
-            },
-            {
-                name: "Lower Right"
-            }
+                {
+                    name: "Upper Left"
+                },
+                {
+                    name: "Upper Center"
+                },
+                {
+                    name: "Upper Right"
+                }
+            ],
+            [
+                {
+                    name: "Center Left"
+                },
+                {
+                    name: "Center Center",
+                    description: "Start Here"
+                },
+                {
+                    name: "Center Right"
+                }
+            ],
+            [
+                {
+                    name: "Lower Left"
+                },
+                {
+                    name: "Lower Center"
+                },
+                {
+                    name: "Lower Right"
+                }
+            ]
         ]
-    ]
     ];
 
-    getMapData(x: number, y:number, z:number): mapData {
+    getMapData(x: number, y: number, z: number): mapData {
         const cell = this.data[z][y][x];
 
-        cell.moveOptions = []
+        cell.moveOptions = [];
         if (
             this.data[z][y - 1] !== undefined &&
             this.data[z][y - 1][x] !== undefined
