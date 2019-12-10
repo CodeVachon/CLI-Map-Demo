@@ -1,7 +1,9 @@
+import { Directions } from "./Directions";
+
 interface mapData {
     name: string;
     description?: string;
-    moveOptions?: string[];
+    moveOptions?: Directions[];
 }
 
 export class Map {
@@ -9,7 +11,16 @@ export class Map {
         [
             [
                 {
-                    name: "Upper Left"
+                    name: "The Pit",
+                    description: "It's dark and nasty down here..."
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    name: "Upper Left",
+                    description: "There is a hole in the ground here"
                 },
                 {
                     name: "Upper Center"
@@ -49,22 +60,36 @@ export class Map {
 
         cell.moveOptions = [];
         if (
+            this.data[z - 1] !== undefined &&
+            this.data[z - 1][y] !== undefined &&
+            this.data[z - 1][y][x] !== undefined
+        ) {
+            cell.moveOptions.push(Directions.Down);
+        }
+        if (
+            this.data[z + 1] !== undefined &&
+            this.data[z + 1][y] !== undefined &&
+            this.data[z + 1][y][x] !== undefined
+        ) {
+            cell.moveOptions.push(Directions.Up);
+        }
+        if (
             this.data[z][y - 1] !== undefined &&
             this.data[z][y - 1][x] !== undefined
         ) {
-            cell.moveOptions.push("N");
+            cell.moveOptions.push(Directions.North);
         }
         if (
             this.data[z][y + 1] !== undefined &&
             this.data[z][y + 1][x] !== undefined
         ) {
-            cell.moveOptions.push("S");
+            cell.moveOptions.push(Directions.South);
         }
         if (this.data[z][y][x - 1] !== undefined) {
-            cell.moveOptions.push("W");
+            cell.moveOptions.push(Directions.West);
         }
         if (this.data[z][y][x + 1] !== undefined) {
-            cell.moveOptions.push("E");
+            cell.moveOptions.push(Directions.East);
         }
 
         return cell;

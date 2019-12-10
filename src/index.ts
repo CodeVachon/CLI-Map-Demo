@@ -1,4 +1,5 @@
-import { Map } from "./map";
+import { Directions } from "./Directions";
+import { Map } from "./Map";
 import chalk from "chalk";
 import figlet from "figlet";
 import inquirer from "inquirer";
@@ -7,7 +8,7 @@ class Character {
     position = {
         x: 1,
         y: 1,
-        z: 0
+        z: 1
     };
 
     constructor(private map: Map) {}
@@ -34,16 +35,22 @@ class Character {
                 }
             ]);
 
-            if (String(answers.direction).toLowerCase() === "w") {
+            if (answers.direction === Directions.Down) {
+                this.position.z = z - 1;
+            }
+            if (answers.direction === Directions.Up) {
+                this.position.z = z + 1;
+            }
+            if (answers.direction === Directions.West) {
                 this.position.x = x - 1;
             }
-            if (String(answers.direction).toLowerCase() === "e") {
+            if (answers.direction === Directions.East) {
                 this.position.x = x + 1;
             }
-            if (String(answers.direction).toLowerCase() === "n") {
+            if (answers.direction === Directions.North) {
                 this.position.y = y - 1;
             }
-            if (String(answers.direction).toLowerCase() === "s") {
+            if (answers.direction === Directions.South) {
                 this.position.y = y + 1;
             }
 
