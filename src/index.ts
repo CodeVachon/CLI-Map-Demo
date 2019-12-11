@@ -63,6 +63,13 @@ class Character {
 
 async function init() {
     console.log(figlet.textSync("Map"));
+
+    console.log("");
+    console.log(chalk.bold.magenta("You Awaken"));
+    console.log(
+        "You awaken with no memory on the ground. You seem to be unharmed, but have\nnothing but the clothes on your back. It's dark, the moon is high and you\nare alone."
+    );
+
     const Player = new Character(new Map());
 
     await Player.describeLocation();

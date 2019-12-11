@@ -5,7 +5,8 @@
   "author": "Christopher Vachon <chrisv@labx.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node ./src/index.ts"
+    "dev": "ts-node ./src/index.ts",
+    "start": "tsc && node ./dist/index.js"
   },
   "dependencies": {
     "@types/figlet": "^1.2.0",
